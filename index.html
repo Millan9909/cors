@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الشهادات التدريبية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>منصة الشهادات التدريبية</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#courses">الدورات</a></li>
+                    <li><a href="#certificates">الشهادات</a></li>
+                    <li><a href="#admin">لوحة التحكم</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- قسم إضافة فيديو جديد -->
+        <section id="admin" class="admin-section">
+            <div class="container">
+                <h2>إضافة محتوى تدريبي جديد</h2>
+                <div class="add-content">
+                    <div class="input-group">
+                        <label for="videoUrl">رابط فيديو اليوتيوب:</label>
+                        <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=...">
+                        <button onclick="addSingleVideo()">إضافة فيديو واحد</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="playlistUrl">رابط قائمة تشغيل اليوتيوب:</label>
+                        <input type="url" id="playlistUrl" placeholder="https://www.youtube.com/playlist?list=...">
+                        <button onclick="addPlaylist()">إضافة قائمة تشغيل</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الدورات المتاحة -->
+        <section id="courses" class="courses-section">
+            <div class="container">
+                <h2>الدورات المتاحة</h2>
+                <div id="coursesList" class="courses-grid">
+                    <!-- سيتم إضافة الدورات هنا ديناميكياً -->
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم مشغل الفيديو -->
+        <section id="videoPlayer" class="video-section" style="display: none;">
+            <div class="container">
+                <div class="video-container">
+                    <div id="player"></div>
+                    <div class="video-info">
+                        <h3 id="videoTitle"></h3>
+                        <div class="progress-bar">
+                            <div id="progressFill"></div>
+                        </div>
+                        <p id="progressText">التقدم: 0%</p>
+                        <button id="certificateBtn" onclick="generateCertificate()" style="display: none;">الحصول على الشهادة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الشهادات -->
+        <section id="certificates" class="certificates-section">
+            <div class="container">
+                <h2>شهاداتي</h2>
+                <div id="certificatesList" class="certificates-grid">
+                    <!-- سيتم إضافة الشهادات هنا -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- نافذة الشهادة -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCertificateModal()">&times;</span>
+            <div id="certificateContent">
+                <!-- محتوى الشهادة -->
+            </div>
+            <button onclick="downloadCertificate()">تحميل الشهادة</button>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
