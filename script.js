@@ -9,7 +9,7 @@ let videoDuration = 0;
 let watchThreshold = 80; // نسبة المشاهدة المطلوبة للحصول على الشهادة
 
 // YouTube API Key - يجب الحصول عليه من Google Cloud Console
-const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE';
+const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE'; // <--- تأكد من استبدال هذا!
 
 // تهيئة YouTube Player API
 function onYouTubeIframeAPIReady() {
