@@ -18,9 +18,19 @@ function onYouTubeIframeAPIReady() {
 
 // استخراج معرف الفيديو من رابط اليوتيوب
 function extractVideoId(url) {
-    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-    const match = url.match(regex);
-    return match ? match[1] : null;
+    let videoId = null;
+    const youtubeRegexes = [
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    ];
+
+    for (const regex of youtubeRegexes) {
+        const match = url.match(regex);
+        if (match && match[1]) {
+            videoId = match[1];
+            break;
+        }
+    }
+    return videoId;
 }
 
 // استخراج معرف قائمة التشغيل
